@@ -1,0 +1,52 @@
+
+<launch>
+  <!-- Arguments -->
+  <arg name="model" default="$(env TURTLEBOT3_MODEL)" doc="model type [burger, waffle, waffle_pi]"/>
+  <arg name="slam_methods" default="cartographer" doc="slam type [gmapping, cartographer, hector, karto, frontier_exploration]"/>
+  <arg name="configuration_basename" default="rocksteady_lds_2d.lua"/>
+  <arg name="open_rviz" default="true"/>
+
+  <!-- TurtleBot3 -->
+  <include file="$(find turtlebot3_bringup)/launch/turtlebot3_remote.launch">
+    <arg name="model" value="$(arg model)" />
+  </include>
+
+  <!-- Rpi camera static tf -->
+  <node pkg="tf" type="static_transform_publisher" name="rpi_camera_broadcast" args="0.032 0 0.11 0.5 0.5 0.5 0.5 base_link camera 100" />
+
+  <!-- apriltag detection launch -->
+  <include file="$(find artag_detections)/launch/apriltag_detection.launch"/>
+
+  <!-- rocksteady core launch -->
+  <include file="$(find rocksteady_recon)/launch/rocksteady_core.launch"/>
+
+  <!-- SLAM: Gmapping, Cartographer, Hector, Karto, Frontier_exploration, RTAB-Map -->
+  <include file="$(find rocksteady_launch)/launch/rocksteady_$(arg slam_methods).launch">
+    <arg name="model" value="$(arg model)"/>
+    <arg name="configuration_basename" value="$(arg configuration_basename)"/>
+  </include>
+  
+  <!-- Explore lite with map topic rerouted -->
+  <node pkg="explore_lite" type="explore" respawn="false" name="explore" output="screen">
+    <param name="robot_base_frame" value="base_link"/>
+    <!-- Remap to modified map data -->
+    <param name="costmap_topic" value="/map"/>
+    <!-- <param name="costmap_topic" value="/map"/> -->
+    <param name="costmap_updates_topic" value="map_updates"/>
+    <param name="visualize" value="true"/>
+    <param name="planner_frequency" value="0.33"/>
+    <param name="progress_timeout" value="30.0"/>
+    <param name="potential_scale" value="4.0"/>
+    <param name="orientation_scale" value="0.0"/>
+    <param name="gain_scale" value="1.0"/>
+    <param name="transform_tolerance" value="0.3"/>
+    <param name="min_frontier_size" value="0.4"/>
+  </node>
+
+
+  <!-- rviz -->
+  <group if="$(arg open_rviz)"> 
+    <node pkg="rviz" type="rviz" name="rviz" required="true"
+          args="-d $(find rocksteady_launch)/rviz/rocksteady_$(arg slam_methods).rviz"/>
+  </group>
+</launch>

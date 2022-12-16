@@ -1,0 +1,27 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/exmachina/NEU/SEM-1/MR/MR_Projects/rocksteady_apriltag/carto_ws/install_isolated/include/**",
+        "/home/exmachina/Abinav/Development_files/cartographer_ws/install_isolated/include/**",
+        "/opt/ros/noetic/include/**",
+        "/home/exmachina/NEU/SEM-1/MR/MR_Projects/rocksteady_apriltag/rocksteady_artags_slam/src/artag_detections/include/**",
+        "/home/exmachina/NEU/SEM-1/MR/MR_Projects/rocksteady_apriltag/rocksteady_artags_slam/src/rocksteady_launch/include/**",
+        "/home/exmachina/NEU/SEM-1/MR/MR_Projects/rocksteady_apriltag/rocksteady_artags_slam/src/rocksteady_recon/include/**",
+        "/home/exmachina/NEU/SEM-1/MR/MR_Projects/rocksteady_apriltag/rocksteady_artags_slam/src/turtlebot3_simulations/turtlebot3_fake/include/**",
+        "/home/exmachina/NEU/SEM-1/MR/MR_Projects/rocksteady_apriltag/rocksteady_artags_slam/src/turtlebot3_simulations/turtlebot3_gazebo/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}

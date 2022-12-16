@@ -1,0 +1,12 @@
+{
+    "python.autoComplete.extraPaths": [
+        "/home/exmachina/NEU/SEM-1/MR/MR_Projects/rocksteady_apriltag/carto_ws/install_isolated/lib/python3/dist-packages",
+        "/home/exmachina/Abinav/Development_files/cartographer_ws/install_isolated/lib/python3/dist-packages",
+        "/opt/ros/noetic/lib/python3/dist-packages"
+    ],
+    "python.analysis.extraPaths": [
+        "/home/exmachina/NEU/SEM-1/MR/MR_Projects/rocksteady_apriltag/carto_ws/install_isolated/lib/python3/dist-packages",
+        "/home/exmachina/Abinav/Development_files/cartographer_ws/install_isolated/lib/python3/dist-packages",
+        "/opt/ros/noetic/lib/python3/dist-packages"
+    ]
+}

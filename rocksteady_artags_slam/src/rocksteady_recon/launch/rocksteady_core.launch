@@ -1,0 +1,12 @@
+
+<launch>
+
+  <!-- map rpublish node -->
+  <node pkg="rocksteady_recon" type="map_republish.py" respawn="false" name="map_republish_node" output="screen"/>
+
+
+  <!-- command reroute node -->
+  <node pkg="rocksteady_recon" type="cmd_velocity_reroute.py" respawn="false" name="cmd_velocity_reroute_node" output="screen"/>
+
+</launch>
+
