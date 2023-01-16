@@ -60,7 +60,7 @@ class reroute_handler():
 
             vel_cmd.angular.z = 0.41887902047
             self.circularMotionEndTime = self.get_current_timestamp() + self.circularMotionDuration.to_sec()
-            print('[INFO]: Executing whirl motion')
+            print('[INFO]: Executing whirl motion') ##performing whirl to obtain the 360 degree view to present arpriltags in environment
             while (self.get_current_timestamp() <= self.circularMotionEndTime):
                
                 self.cmd_pub.publish(vel_cmd)

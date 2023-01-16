@@ -1,6 +1,5 @@
 #!/usr/bin/env python3  
 import rospy
-import math
 import tf2_ros
 import tf_conversions
 import geometry_msgs.msg
@@ -193,7 +192,7 @@ class artag_detections_handler():
         r21 = 2 * (q2 * q3 + q0 * q1)
         r22 = 2 * (q0 * q0 + q3 * q3) - 1
         
-        # 3x3 rotation matrix
+        # 3x3 rotation matrix orientation
         rot_matrix = np.matrix([[r00, r01, r02],
                                 [r10, r11, r12],
                                 [r20, r21, r22]])
